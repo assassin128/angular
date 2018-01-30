@@ -1,36 +1,26 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { ClubsComponent } from './components/clubs/clubs.component';
-import { AboutComponent } from './components/about/about.component';
-import { MenuComponent } from './components/menu/menu.component';
-import { HomeComponent } from './components/home/home.component';
-import { Page404Component } from './components/404/404.component';
-
-const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'about', component: AboutComponent },
-  { path: '**', component: Page404Component }
-];
+import { HeroesComponent } from './heroes/heroes.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { HeroService } from './service/hero.service';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageService } from './service/message.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClubsComponent,
-    AboutComponent,
-    MenuComponent,
-    HomeComponent,
-    Page404Component
+    HeroesComponent,
+    HeroDetailComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
     FormsModule
   ],
-  providers: [],
+  providers: [HeroService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
