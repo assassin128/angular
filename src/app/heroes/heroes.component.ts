@@ -3,27 +3,31 @@ import { Hero } from '../hero';
 import { HeroService } from '../service/hero.service';
 
 @Component({
-  selector: 'app-heroes',
-  templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.css']
+    selector: 'app-heroes',
+    templateUrl: './heroes.component.html',
+    styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
 
-  heroes: Hero[];
-  selectedHero: Hero;
+    heroes: Hero[];
+    constructor(private heroService: HeroService) { }
 
-  constructor(private heroService: HeroService) { }
+    ngOnInit() {
+        this.getHeroes();
+    }
 
-  ngOnInit() {
-    this.getHeroes();
-  }
+    getHeroes(): void {
+        this.heroService.getHeroes().subscribe(res => this.heroes = res);
+    }
 
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-  }
+    add(name: string): void {
+        name = name.trim();
+        if (!name) { return; }
+        this.heroService.addHero({ name } as Hero).subscribe(hero => this.heroes.push(hero));
+    }
 
-  getHeroes() {
-    this.heroService.getHeroes().subscribe(res => this.heroes = res);
-  }
+    delete(hero: Hero | number): void {
+        this.heroService.deleteHero(hero).subscribe(() => this.heroes = this.heroes.filter(h => h !== hero));
+    }
 
 }
