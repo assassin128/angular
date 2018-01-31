@@ -1,4 +1,4 @@
-import { Component, AfterViewChecked } from '@angular/core';
+import { Component } from '@angular/core';
 import * as $ from 'jquery';
 
 @Component({
@@ -6,11 +6,6 @@ import * as $ from 'jquery';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewChecked {
+export class AppComponent {
     title = 'Tour of Heroes';
-
-    ngAfterViewChecked() {
-        $('#app-content').show();
-        $('.loading').hide();
-    }
 }
