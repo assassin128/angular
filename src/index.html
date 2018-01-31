@@ -8,10 +8,25 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        .loading {
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        @media (max-width: 789px) {
+            .loading {
+                width: 100%
+            }
+        }
+
+    </style>
 </head>
 
 <body>
-    <app-root></app-root>
+    <img src="./assets/loader.gif" alt="" class="loading">
+    <app-root id="app-content"></app-root>
 </body>
 
 </html>
